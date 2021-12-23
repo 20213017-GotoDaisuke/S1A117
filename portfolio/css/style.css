@@ -52,6 +52,25 @@ li {
   margin: 0 auto;
   padding: 0 40px;
 }
+.line {
+  display: block;
+  position: relative;
+}
+.line::after {
+  background: linear-gradient(to right, #362ae0 0%,#3b79cc 50%,#42d3ed 100%);
+  content: '';
+  display: block;
+  height: 1px;
+  width: 0;
+  transform: translateX(-50%);
+  transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+.line.is-animated::after {
+  width: 100%;
+}
 
 /*--------------------------------
  見出し
@@ -69,14 +88,13 @@ li {
 .lead {
   margin-bottom: 30px;
 }
-
 /*--------------------------------
 ヘッダー
 ---------------------------------*/
 .header {
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 5px 10px -6px rgba(0,0,0,.1);
@@ -137,6 +155,31 @@ li {
   width: 100%;
 }
 
+.trans-scale {
+  background: rgb(255, 255, 255);
+  padding: 16px;
+  color: white;
+  }
+  
+.trans-scale:hover {
+  transform: scale(.7, .7);
+  }
+
+/*--------------------------------
+ メインビジュアル背景
+---------------------------------*/
+/* #bg-video{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: url('stopSnow.png') no-repeat;
+  background-size: cover;
+ } */
 /*--------------------------------
  メインビジュアル
 ---------------------------------*/
@@ -159,13 +202,38 @@ li {
   margin-bottom: 5px;
   letter-spacing: .1em;
 }
+
+/*　サブタイトルの設定  */
 .main-visual-subtitle {
   font-size: 20px;
   font-weight: bold;
   line-height: 1;
   margin-bottom: 40px;
-  letter-spacing: .08em;
+  display: inline-block;
+	position: relative;
+	text-decoration: none;
 }
+.main-visual-subtitle::after {
+	position: absolute;
+	content: '';
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background:#9A9E7A;
+	transition: all 0.3s ease 0s;
+}
+.main-visual-subtitle:hover{
+  transform: translate(5px,5px);
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.main-visual-subtitle:hover::after{
+  width: 100%;
+}
+/* */
+
+
 .main-visual-profile{
   display: flex;
   flex-wrap: wrap;
